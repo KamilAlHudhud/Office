@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Office
 {
-    public partial class Form1 : Form
+    public partial class Form_logowanie : Form
     {
-        public Form1()
+        public Form_logowanie()
         {
             InitializeComponent();
         }
