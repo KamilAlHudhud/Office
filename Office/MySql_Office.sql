@@ -1,0 +1,2 @@
+SELECT * FROM office.uzytkownik;
+

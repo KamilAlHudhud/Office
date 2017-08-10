@@ -1,0 +1,12 @@
+C:\Users\Justynaa\Documents\Projekty\Office\Office\bin\Debug\Office.exe.config
+C:\Users\Justynaa\Documents\Projekty\Office\Office\bin\Debug\Office.exe
+C:\Users\Justynaa\Documents\Projekty\Office\Office\bin\Debug\Office.pdb
+C:\Users\Justynaa\Documents\Projekty\Office\Office\obj\Debug\Office.csprojResolveAssemblyReference.cache
+C:\Users\Justynaa\Documents\Projekty\Office\Office\obj\Debug\Office.Form_logowanie.resources
+C:\Users\Justynaa\Documents\Projekty\Office\Office\obj\Debug\Office.Menu_Glowne.resources
+C:\Users\Justynaa\Documents\Projekty\Office\Office\obj\Debug\Office.Properties.Resources.resources
+C:\Users\Justynaa\Documents\Projekty\Office\Office\obj\Debug\Office.csproj.GenerateResource.Cache
+C:\Users\Justynaa\Documents\Projekty\Office\Office\obj\Debug\Office.exe
+C:\Users\Justynaa\Documents\Projekty\Office\Office\obj\Debug\Office.pdb
+C:\Users\Justynaa\Documents\Projekty\Office\Office\bin\Debug\MySql.Data.dll
+C:\Users\Justynaa\Documents\Projekty\Office\Office\bin\Debug\MySql.Data.xml

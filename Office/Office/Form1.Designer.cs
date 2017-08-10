@@ -94,6 +94,7 @@
             this.btn_zaloguj.TabIndex = 2;
             this.btn_zaloguj.Text = "Zaloguj";
             this.btn_zaloguj.UseVisualStyleBackColor = true;
+            this.btn_zaloguj.Click += new System.EventHandler(this.btn_zaloguj_Click);
             // 
             // btn_anuluj
             // 
@@ -114,6 +115,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_logowanie";
             this.Text = "Logowanie";
+            this.Load += new System.EventHandler(this.Form_logowanie_Load);
             this.gB_Logowanie.ResumeLayout(false);
             this.gB_Logowanie.PerformLayout();
             this.ResumeLayout(false);
