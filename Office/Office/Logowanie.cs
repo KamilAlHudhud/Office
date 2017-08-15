@@ -38,7 +38,7 @@ namespace Office
           
                 try
                 {
-                 //Otwieranie Menu główne zamykanie Login 
+                 //Otwieranie Menu główne & zamykanie Login 
                     laczbaze.Open();
                     odczytywanie = logowanie.ExecuteReader();
 
