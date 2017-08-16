@@ -42,10 +42,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtB_Nazwisko = new System.Windows.Forms.TextBox();
+            this.txtB_Imie = new System.Windows.Forms.TextBox();
+            this.txtB_Haslo = new System.Windows.Forms.TextBox();
+            this.txtB_Login = new System.Windows.Forms.TextBox();
             this.btn_Ustawienia_Usun = new System.Windows.Forms.Button();
             this.btn_Ustawienia_Dodaj = new System.Windows.Forms.Button();
             this.btn_Ustawienia_Modyfikuj = new System.Windows.Forms.Button();
@@ -58,8 +58,8 @@
             // 
             // tP_ustawienia
             // 
-            this.tP_ustawienia.Controls.Add(this.tabPage1);
             this.tP_ustawienia.Controls.Add(this.tabPage2);
+            this.tP_ustawienia.Controls.Add(this.tabPage1);
             this.tP_ustawienia.Location = new System.Drawing.Point(5, 3);
             this.tP_ustawienia.Name = "tP_ustawienia";
             this.tP_ustawienia.SelectedIndex = 0;
@@ -109,6 +109,8 @@
             // 
             // dGV_Ustawienia
             // 
+            this.dGV_Ustawienia.AllowUserToAddRows = false;
+            this.dGV_Ustawienia.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -128,8 +130,10 @@
             this.dGV_Ustawienia.DefaultCellStyle = dataGridViewCellStyle2;
             this.dGV_Ustawienia.Location = new System.Drawing.Point(346, 20);
             this.dGV_Ustawienia.Name = "dGV_Ustawienia";
+            this.dGV_Ustawienia.ReadOnly = true;
             this.dGV_Ustawienia.Size = new System.Drawing.Size(290, 390);
             this.dGV_Ustawienia.TabIndex = 1;
+            this.dGV_Ustawienia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Ustawienia_CellClick);
             // 
             // gB_Ustawienia_Dane
             // 
@@ -137,10 +141,10 @@
             this.gB_Ustawienia_Dane.Controls.Add(this.label4);
             this.gB_Ustawienia_Dane.Controls.Add(this.label3);
             this.gB_Ustawienia_Dane.Controls.Add(this.label2);
-            this.gB_Ustawienia_Dane.Controls.Add(this.textBox4);
-            this.gB_Ustawienia_Dane.Controls.Add(this.textBox3);
-            this.gB_Ustawienia_Dane.Controls.Add(this.textBox2);
-            this.gB_Ustawienia_Dane.Controls.Add(this.textBox1);
+            this.gB_Ustawienia_Dane.Controls.Add(this.txtB_Nazwisko);
+            this.gB_Ustawienia_Dane.Controls.Add(this.txtB_Imie);
+            this.gB_Ustawienia_Dane.Controls.Add(this.txtB_Haslo);
+            this.gB_Ustawienia_Dane.Controls.Add(this.txtB_Login);
             this.gB_Ustawienia_Dane.Controls.Add(this.btn_Ustawienia_Usun);
             this.gB_Ustawienia_Dane.Controls.Add(this.btn_Ustawienia_Dodaj);
             this.gB_Ustawienia_Dane.Controls.Add(this.btn_Ustawienia_Modyfikuj);
@@ -191,33 +195,34 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Login:";
             // 
-            // textBox4
+            // txtB_Nazwisko
             // 
-            this.textBox4.Location = new System.Drawing.Point(34, 238);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(227, 20);
-            this.textBox4.TabIndex = 3;
+            this.txtB_Nazwisko.Location = new System.Drawing.Point(34, 238);
+            this.txtB_Nazwisko.Name = "txtB_Nazwisko";
+            this.txtB_Nazwisko.Size = new System.Drawing.Size(227, 20);
+            this.txtB_Nazwisko.TabIndex = 3;
             // 
-            // textBox3
+            // txtB_Imie
             // 
-            this.textBox3.Location = new System.Drawing.Point(34, 184);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(227, 20);
-            this.textBox3.TabIndex = 3;
+            this.txtB_Imie.Location = new System.Drawing.Point(34, 184);
+            this.txtB_Imie.Name = "txtB_Imie";
+            this.txtB_Imie.Size = new System.Drawing.Size(227, 20);
+            this.txtB_Imie.TabIndex = 3;
             // 
-            // textBox2
+            // txtB_Haslo
             // 
-            this.textBox2.Location = new System.Drawing.Point(34, 130);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(227, 20);
-            this.textBox2.TabIndex = 3;
+            this.txtB_Haslo.Location = new System.Drawing.Point(34, 130);
+            this.txtB_Haslo.Name = "txtB_Haslo";
+            this.txtB_Haslo.PasswordChar = '*';
+            this.txtB_Haslo.Size = new System.Drawing.Size(227, 20);
+            this.txtB_Haslo.TabIndex = 3;
             // 
-            // textBox1
+            // txtB_Login
             // 
-            this.textBox1.Location = new System.Drawing.Point(34, 76);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(227, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtB_Login.Location = new System.Drawing.Point(34, 76);
+            this.txtB_Login.Name = "txtB_Login";
+            this.txtB_Login.Size = new System.Drawing.Size(227, 20);
+            this.txtB_Login.TabIndex = 3;
             // 
             // btn_Ustawienia_Usun
             // 
@@ -236,6 +241,7 @@
             this.btn_Ustawienia_Dodaj.TabIndex = 2;
             this.btn_Ustawienia_Dodaj.Text = "Dodaj";
             this.btn_Ustawienia_Dodaj.UseVisualStyleBackColor = true;
+            this.btn_Ustawienia_Dodaj.Click += new System.EventHandler(this.btn_Ustawienia_Dodaj_Click);
             // 
             // btn_Ustawienia_Modyfikuj
             // 
@@ -254,7 +260,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(667, 438);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Usługi";
             // 
             // Menu_Glowne
             // 
@@ -290,10 +296,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtB_Nazwisko;
+        private System.Windows.Forms.TextBox txtB_Imie;
+        private System.Windows.Forms.TextBox txtB_Haslo;
+        private System.Windows.Forms.TextBox txtB_Login;
         private System.Windows.Forms.Button btn_Ustawienia_Usun;
         private System.Windows.Forms.Button btn_Ustawienia_Dodaj;
         private System.Windows.Forms.Button btn_Ustawienia_Modyfikuj;
