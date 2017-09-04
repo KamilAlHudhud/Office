@@ -23,11 +23,11 @@ namespace Office
             InitializeComponent();
         }
         #region Funkcja Pokaż siatkę
-        private void pokaz_siatke()
+        private void pokaz_siatke(DataGridView siatka,TextBox txt_szukany)
         {
             //Pobieranie danych do tabeli
             MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
-            MySqlCommand pobierz = new MySqlCommand("select iduzytkownik, imie as Imie,nazwisko as Nazwisko,login as Login , admin as Admin,haslo from Office.uzytkownik  ;", laczbaze);
+            MySqlCommand pobierz = new MySqlCommand("select iduzytkownik, imie as Imie,nazwisko as Nazwisko,login as Login , admin as Admin,haslo from Office.uzytkownik WHERE imie OR nazwisko OR login LIKE '%" + txt_szukany.Text + "%' ;", laczbaze);
             try
             {
                 laczbaze.Open();
@@ -38,9 +38,11 @@ namespace Office
                 BindingSource bSource = new BindingSource();
 
                 bSource.DataSource = dbdataset;
-                dGV_Ustawienia.DataSource = bSource;
+                siatka.DataSource = bSource;
                 adapter.Update(dbdataset);
                 laczbaze.Close();
+                txt_szukany.Text = "";
+
             }
             catch (Exception ex)
             {
@@ -53,28 +55,7 @@ namespace Office
         private void btn_Ustawienia_szukaj_Click(object sender, EventArgs e)
         {
             //Pobieranie danych do tabeli
-            MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
-            MySqlCommand pobierz = new MySqlCommand("select iduzytkownik, imie as Imie,nazwisko as Nazwisko,login as Login , admin as Admin,haslo from Office.uzytkownik WHERE imie OR nazwisko OR login LIKE '%" + txtB_Ustawienia_szukaj.Text + "%' ;", laczbaze);
-            try
-            {
-                laczbaze.Open();
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = pobierz;
-                DataTable dbdataset = new DataTable();
-                adapter.Fill(dbdataset);
-                BindingSource bSource = new BindingSource();
-
-                bSource.DataSource = dbdataset;
-                dGV_Ustawienia.DataSource = bSource;
-                adapter.Update(dbdataset);
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            laczbaze.Close();
+            pokaz_siatke(dGV_Ustawienia, txtB_Ustawienia_szukaj);
 
             //Ukrycie iduzytkownika oraz hasla
             dGV_Ustawienia.Columns[0].Visible = false;
@@ -125,7 +106,7 @@ namespace Office
                     transakcja.Rollback();
                 }
                 laczbaze.Close();
-                pokaz_siatke();
+                pokaz_siatke(dGV_Ustawienia, txtB_Ustawienia_szukaj);
             }
 
         }
@@ -160,7 +141,7 @@ namespace Office
                     transakcja.Rollback();
                 }
                 laczbaze.Close();
-                pokaz_siatke();
+                pokaz_siatke(dGV_Ustawienia, txtB_Ustawienia_szukaj);
             }
 
         }
@@ -200,9 +181,14 @@ namespace Office
                     transakcja.Rollback();
                 }
                 laczbaze.Close();
-                pokaz_siatke();
+                pokaz_siatke(dGV_Ustawienia, txtB_Ustawienia_szukaj);
             }
             #endregion
+        }
+
+        private void btn_uslugi_szukaj_Click(object sender, EventArgs e)
+        {
+            pokaz_siatke(dGV_Uslugi_Uzytkownicy,txt_uslugi_szukaj);
         }
     }
 }

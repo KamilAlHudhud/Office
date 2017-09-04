@@ -33,6 +33,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu_Glowne));
             this.tP_ustawienia = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.gB_Uslugi = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_uslugi_szukaj = new System.Windows.Forms.TextBox();
+            this.btn_uslugi_szukaj = new System.Windows.Forms.Button();
+            this.btn_uslugi_usun = new System.Windows.Forms.Button();
+            this.btn_uslugi_modyfikuj = new System.Windows.Forms.Button();
+            this.btn_uslugi_dodaj = new System.Windows.Forms.Button();
+            this.dGV_Uslugi_Uslugi = new System.Windows.Forms.DataGridView();
+            this.dGV_Uslugi_Uzytkownicy = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Ustawienia_szukaj = new System.Windows.Forms.Button();
@@ -50,7 +65,12 @@
             this.btn_Ustawienia_Usun = new System.Windows.Forms.Button();
             this.btn_Ustawienia_Dodaj = new System.Windows.Forms.Button();
             this.btn_Ustawienia_Modyfikuj = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.tP_ustawienia.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.gB_Uslugi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_Uslugi_Uslugi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_Uslugi_Uzytkownicy)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Ustawienia)).BeginInit();
             this.gB_Ustawienia_Dane.SuspendLayout();
@@ -60,7 +80,7 @@
             // 
             this.tP_ustawienia.Controls.Add(this.tabPage2);
             this.tP_ustawienia.Controls.Add(this.tabPage1);
-            this.tP_ustawienia.Location = new System.Drawing.Point(5, 3);
+            this.tP_ustawienia.Location = new System.Drawing.Point(3, 3);
             this.tP_ustawienia.Name = "tP_ustawienia";
             this.tP_ustawienia.SelectedIndex = 0;
             this.tP_ustawienia.Size = new System.Drawing.Size(675, 464);
@@ -69,12 +89,153 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Teal;
+            this.tabPage2.Controls.Add(this.gB_Uslugi);
+            this.tabPage2.Controls.Add(this.dGV_Uslugi_Uslugi);
+            this.tabPage2.Controls.Add(this.dGV_Uslugi_Uzytkownicy);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(667, 438);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Usługi";
+            // 
+            // gB_Uslugi
+            // 
+            this.gB_Uslugi.Controls.Add(this.label9);
+            this.gB_Uslugi.Controls.Add(this.label8);
+            this.gB_Uslugi.Controls.Add(this.label7);
+            this.gB_Uslugi.Controls.Add(this.label6);
+            this.gB_Uslugi.Controls.Add(this.textBox5);
+            this.gB_Uslugi.Controls.Add(this.textBox4);
+            this.gB_Uslugi.Controls.Add(this.textBox3);
+            this.gB_Uslugi.Controls.Add(this.textBox2);
+            this.gB_Uslugi.Controls.Add(this.txt_uslugi_szukaj);
+            this.gB_Uslugi.Controls.Add(this.btn_uslugi_szukaj);
+            this.gB_Uslugi.Controls.Add(this.btn_uslugi_usun);
+            this.gB_Uslugi.Controls.Add(this.btn_uslugi_modyfikuj);
+            this.gB_Uslugi.Controls.Add(this.btn_uslugi_dodaj);
+            this.gB_Uslugi.Location = new System.Drawing.Point(12, 6);
+            this.gB_Uslugi.Name = "gB_Uslugi";
+            this.gB_Uslugi.Size = new System.Drawing.Size(341, 426);
+            this.gB_Uslugi.TabIndex = 1;
+            this.gB_Uslugi.TabStop = false;
+            this.gB_Uslugi.Text = "Usługi";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(21, 147);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Godzina:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(21, 97);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Dzień:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(21, 50);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Usługa:";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(24, 207);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(283, 153);
+            this.textBox5.TabIndex = 8;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(24, 163);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(283, 20);
+            this.textBox4.TabIndex = 7;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(24, 113);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(283, 20);
+            this.textBox3.TabIndex = 6;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(24, 66);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(283, 20);
+            this.textBox2.TabIndex = 5;
+            // 
+            // txt_uslugi_szukaj
+            // 
+            this.txt_uslugi_szukaj.Location = new System.Drawing.Point(24, 21);
+            this.txt_uslugi_szukaj.Name = "txt_uslugi_szukaj";
+            this.txt_uslugi_szukaj.Size = new System.Drawing.Size(193, 20);
+            this.txt_uslugi_szukaj.TabIndex = 4;
+            // 
+            // btn_uslugi_szukaj
+            // 
+            this.btn_uslugi_szukaj.Location = new System.Drawing.Point(232, 19);
+            this.btn_uslugi_szukaj.Name = "btn_uslugi_szukaj";
+            this.btn_uslugi_szukaj.Size = new System.Drawing.Size(75, 23);
+            this.btn_uslugi_szukaj.TabIndex = 3;
+            this.btn_uslugi_szukaj.Text = "Szukaj";
+            this.btn_uslugi_szukaj.UseVisualStyleBackColor = true;
+            this.btn_uslugi_szukaj.Click += new System.EventHandler(this.btn_uslugi_szukaj_Click);
+            // 
+            // btn_uslugi_usun
+            // 
+            this.btn_uslugi_usun.Location = new System.Drawing.Point(232, 375);
+            this.btn_uslugi_usun.Name = "btn_uslugi_usun";
+            this.btn_uslugi_usun.Size = new System.Drawing.Size(75, 23);
+            this.btn_uslugi_usun.TabIndex = 2;
+            this.btn_uslugi_usun.Text = "Usuń";
+            this.btn_uslugi_usun.UseVisualStyleBackColor = true;
+            // 
+            // btn_uslugi_modyfikuj
+            // 
+            this.btn_uslugi_modyfikuj.Location = new System.Drawing.Point(126, 375);
+            this.btn_uslugi_modyfikuj.Name = "btn_uslugi_modyfikuj";
+            this.btn_uslugi_modyfikuj.Size = new System.Drawing.Size(75, 23);
+            this.btn_uslugi_modyfikuj.TabIndex = 1;
+            this.btn_uslugi_modyfikuj.Text = "Modyfikuj";
+            this.btn_uslugi_modyfikuj.UseVisualStyleBackColor = true;
+            // 
+            // btn_uslugi_dodaj
+            // 
+            this.btn_uslugi_dodaj.Location = new System.Drawing.Point(24, 375);
+            this.btn_uslugi_dodaj.Name = "btn_uslugi_dodaj";
+            this.btn_uslugi_dodaj.Size = new System.Drawing.Size(75, 23);
+            this.btn_uslugi_dodaj.TabIndex = 0;
+            this.btn_uslugi_dodaj.Text = "Dodaj";
+            this.btn_uslugi_dodaj.UseVisualStyleBackColor = true;
+            // 
+            // dGV_Uslugi_Uslugi
+            // 
+            this.dGV_Uslugi_Uslugi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGV_Uslugi_Uslugi.Location = new System.Drawing.Point(359, 227);
+            this.dGV_Uslugi_Uslugi.Name = "dGV_Uslugi_Uslugi";
+            this.dGV_Uslugi_Uslugi.Size = new System.Drawing.Size(302, 208);
+            this.dGV_Uslugi_Uslugi.TabIndex = 0;
+            // 
+            // dGV_Uslugi_Uzytkownicy
+            // 
+            this.dGV_Uslugi_Uzytkownicy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGV_Uslugi_Uzytkownicy.Location = new System.Drawing.Point(359, 6);
+            this.dGV_Uslugi_Uzytkownicy.Name = "dGV_Uslugi_Uzytkownicy";
+            this.dGV_Uslugi_Uzytkownicy.Size = new System.Drawing.Size(302, 215);
+            this.dGV_Uslugi_Uzytkownicy.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -264,6 +425,15 @@
             this.btn_Ustawienia_Modyfikuj.UseVisualStyleBackColor = true;
             this.btn_Ustawienia_Modyfikuj.Click += new System.EventHandler(this.btn_Ustawienia_Modyfikuj_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(21, 191);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(31, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Opis:";
+            // 
             // Menu_Glowne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,6 +445,11 @@
             this.Name = "Menu_Glowne";
             this.Text = "Menu Główne";
             this.tP_ustawienia.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.gB_Uslugi.ResumeLayout(false);
+            this.gB_Uslugi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_Uslugi_Uslugi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_Uslugi_Uzytkownicy)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Ustawienia)).EndInit();
@@ -305,5 +480,21 @@
         private System.Windows.Forms.Button btn_Ustawienia_Usun;
         private System.Windows.Forms.Button btn_Ustawienia_Dodaj;
         private System.Windows.Forms.Button btn_Ustawienia_Modyfikuj;
+        private System.Windows.Forms.GroupBox gB_Uslugi;
+        private System.Windows.Forms.DataGridView dGV_Uslugi_Uslugi;
+        private System.Windows.Forms.DataGridView dGV_Uslugi_Uzytkownicy;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_uslugi_szukaj;
+        private System.Windows.Forms.Button btn_uslugi_szukaj;
+        private System.Windows.Forms.Button btn_uslugi_usun;
+        private System.Windows.Forms.Button btn_uslugi_modyfikuj;
+        private System.Windows.Forms.Button btn_uslugi_dodaj;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label9;
     }
 }
