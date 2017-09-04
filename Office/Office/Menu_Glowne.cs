@@ -25,9 +25,9 @@ namespace Office
         #region Funkcja Pokaż siatkę
         private void pokaz_siatke()
         {
-                 //Pobieranie danych do tabeli
-        MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
-        MySqlCommand pobierz = new MySqlCommand("select iduzytkownik, imie as Imie,nazwisko as Nazwisko,login as Login , admin as Admin,haslo from Office.uzytkownik  ;", laczbaze);
+            //Pobieranie danych do tabeli
+            MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
+            MySqlCommand pobierz = new MySqlCommand("select iduzytkownik, imie as Imie,nazwisko as Nazwisko,login as Login , admin as Admin,haslo from Office.uzytkownik  ;", laczbaze);
             try
             {
                 laczbaze.Open();
@@ -46,9 +46,9 @@ namespace Office
             {
                 MessageBox.Show(ex.Message);
             }
-            }
-#endregion
-       
+        }
+        #endregion
+
         #region Szukaj/Ustawienia
         private void btn_Ustawienia_szukaj_Click(object sender, EventArgs e)
         {
@@ -68,14 +68,14 @@ namespace Office
                 dGV_Ustawienia.DataSource = bSource;
                 adapter.Update(dbdataset);
 
-               
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             laczbaze.Close();
-           
+
             //Ukrycie iduzytkownika oraz hasla
             dGV_Ustawienia.Columns[0].Visible = false;
             dGV_Ustawienia.Columns[5].Visible = false;
@@ -99,22 +99,22 @@ namespace Office
         #region Dodawanie nowych użytkowników
         private void btn_Ustawienia_Dodaj_Click(object sender, EventArgs e)
         {
-            if (txtB_Imie.Text.Length <=3 || txtB_Nazwisko.Text.Length <= 3 || txtB_Login.Text.Length <= 3 || txtB_Haslo.Text.Length <= 3)
+            if (txtB_Imie.Text.Length <= 3 || txtB_Nazwisko.Text.Length <= 3 || txtB_Login.Text.Length <= 3 || txtB_Haslo.Text.Length <= 3)
             {
                 MessageBox.Show("Uzupełnij Dane!");
             }
             else
             {
 
-            MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
-            MySqlCommand dodaj = new MySqlCommand();
-            MySqlTransaction transakcja;
-            laczbaze.Open();
-            transakcja = laczbaze.BeginTransaction(IsolationLevel.ReadCommitted);
-            dodaj.Connection = laczbaze;
-            dodaj.Transaction = transakcja;
+                MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
+                MySqlCommand dodaj = new MySqlCommand();
+                MySqlTransaction transakcja;
+                laczbaze.Open();
+                transakcja = laczbaze.BeginTransaction(IsolationLevel.ReadCommitted);
+                dodaj.Connection = laczbaze;
+                dodaj.Transaction = transakcja;
                 try
-                { 
+                {
                     dodaj.CommandText = "INSERT INTO office.uzytkownik SET login = '" + txtB_Login.Text + "', imie = '" + txtB_Imie.Text + "', nazwisko = '" + txtB_Nazwisko.Text + "', haslo = PASSWORD('" + txtB_Haslo.Text + "');";
                     dodaj.ExecuteNonQuery();
                     transakcja.Commit();
@@ -127,7 +127,7 @@ namespace Office
                 laczbaze.Close();
                 pokaz_siatke();
             }
-            
+
         }
         #endregion
 
@@ -150,7 +150,7 @@ namespace Office
                 modyfikuj.Transaction = transakcja;
                 try
                 {
-                    modyfikuj.CommandText = "UPDATE office.uzytkownik SET login = '" + txtB_Login.Text + "', imie = '" + txtB_Imie.Text + "', nazwisko = '" + txtB_Nazwisko.Text + "', haslo = PASSWORD('" + txtB_Haslo.Text + "') WHERE iduzytkownik ="+id_rekordu+";";
+                    modyfikuj.CommandText = "UPDATE office.uzytkownik SET login = '" + txtB_Login.Text + "', imie = '" + txtB_Imie.Text + "', nazwisko = '" + txtB_Nazwisko.Text + "', haslo = PASSWORD('" + txtB_Haslo.Text + "') WHERE iduzytkownik =" + id_rekordu + ";";
                     modyfikuj.ExecuteNonQuery();
                     transakcja.Commit();
                 }
@@ -165,6 +165,44 @@ namespace Office
 
         }
         #endregion
+
+
+        #region Delete danych użytkownika/pracownika
+        private void btn_Ustawienia_Usun_Click(object sender, EventArgs e)
+        {
+            if (id_rekordu == 1)
+            {
+                MessageBox.Show("Brak możliwości usunięcia Admina");
+            }
+            else
+            {
+
+                MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
+                MySqlCommand delete = new MySqlCommand();
+                MySqlTransaction transakcja;
+                laczbaze.Open();
+                transakcja = laczbaze.BeginTransaction(IsolationLevel.ReadCommitted);
+                delete.Connection = laczbaze;
+                delete.Transaction = transakcja;
+                try
+                {
+                    if (MessageBox.Show("Czy napewno chcesz usunąć użytkownika?", "UWAGA!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        delete.CommandText = "DELETE FROM office.uzytkownik WHERE iduzytkownik =" + id_rekordu + ";";
+                        delete.ExecuteNonQuery();
+                        transakcja.Commit();
+                        MessageBox.Show("Użytkownik został usunięty");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    transakcja.Rollback();
+                }
+                laczbaze.Close();
+                pokaz_siatke();
+            }
+            #endregion
+        }
     }
 }
-

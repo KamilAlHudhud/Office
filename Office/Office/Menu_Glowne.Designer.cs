@@ -242,6 +242,7 @@
             this.btn_Ustawienia_Usun.TabIndex = 2;
             this.btn_Ustawienia_Usun.Text = "Usuń";
             this.btn_Ustawienia_Usun.UseVisualStyleBackColor = true;
+            this.btn_Ustawienia_Usun.Click += new System.EventHandler(this.btn_Ustawienia_Usun_Click);
             // 
             // btn_Ustawienia_Dodaj
             // 
