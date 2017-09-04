@@ -15,18 +15,19 @@ namespace Office
 
     public partial class Menu_Glowne : Form
     {
+
         String Konfiguracja = "datasource=localhost;port=3306;username=root;password=kamil123;database=Office";
         int id_rekordu; //zapisanie w zmiennej id rekorku
         public Menu_Glowne()
         {
             InitializeComponent();
         }
-        #region Szukaj/Ustawienia
-        private void btn_Ustawienia_szukaj_Click(object sender, EventArgs e)
+        #region Funkcja Pokaż siatkę
+        private void pokaz_siatke()
         {
-            //Pobieranie danych do tabeli
-            MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
-            MySqlCommand pobierz = new MySqlCommand("select iduzytkownik, imie as Imie,nazwisko as Nazwisko,login as Login , admin as Admin,haslo from Office.uzytkownik WHERE imie OR nazwisko OR login LIKE '%" + txtB_Ustawienia_szukaj.Text + "%' ;", laczbaze);
+                 //Pobieranie danych do tabeli
+        MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
+        MySqlCommand pobierz = new MySqlCommand("select iduzytkownik, imie as Imie,nazwisko as Nazwisko,login as Login , admin as Admin,haslo from Office.uzytkownik  ;", laczbaze);
             try
             {
                 laczbaze.Open();
@@ -45,6 +46,36 @@ namespace Office
             {
                 MessageBox.Show(ex.Message);
             }
+            }
+#endregion
+       
+        #region Szukaj/Ustawienia
+        private void btn_Ustawienia_szukaj_Click(object sender, EventArgs e)
+        {
+            //Pobieranie danych do tabeli
+            MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
+            MySqlCommand pobierz = new MySqlCommand("select iduzytkownik, imie as Imie,nazwisko as Nazwisko,login as Login , admin as Admin,haslo from Office.uzytkownik WHERE imie OR nazwisko OR login LIKE '%" + txtB_Ustawienia_szukaj.Text + "%' ;", laczbaze);
+            try
+            {
+                laczbaze.Open();
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = pobierz;
+                DataTable dbdataset = new DataTable();
+                adapter.Fill(dbdataset);
+                BindingSource bSource = new BindingSource();
+
+                bSource.DataSource = dbdataset;
+                dGV_Ustawienia.DataSource = bSource;
+                adapter.Update(dbdataset);
+
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            laczbaze.Close();
+           
             //Ukrycie iduzytkownika oraz hasla
             dGV_Ustawienia.Columns[0].Visible = false;
             dGV_Ustawienia.Columns[5].Visible = false;
@@ -94,9 +125,46 @@ namespace Office
                     transakcja.Rollback();
                 }
                 laczbaze.Close();
+                pokaz_siatke();
             }
-            #endregion
+            
         }
+        #endregion
+
+        #region Modyfikowanie danych użytkownika/pracownika
+        private void btn_Ustawienia_Modyfikuj_Click(object sender, EventArgs e)
+        {
+            if (txtB_Imie.Text.Length <= 3 || txtB_Nazwisko.Text.Length <= 3 || txtB_Login.Text.Length <= 3 || txtB_Haslo.Text.Length <= 3)
+            {
+                MessageBox.Show("Uzupełnij Dane!");
+            }
+            else
+            {
+
+                MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
+                MySqlCommand modyfikuj = new MySqlCommand();
+                MySqlTransaction transakcja;
+                laczbaze.Open();
+                transakcja = laczbaze.BeginTransaction(IsolationLevel.ReadCommitted);
+                modyfikuj.Connection = laczbaze;
+                modyfikuj.Transaction = transakcja;
+                try
+                {
+                    modyfikuj.CommandText = "UPDATE office.uzytkownik SET login = '" + txtB_Login.Text + "', imie = '" + txtB_Imie.Text + "', nazwisko = '" + txtB_Nazwisko.Text + "', haslo = PASSWORD('" + txtB_Haslo.Text + "') WHERE iduzytkownik ="+id_rekordu+";";
+                    modyfikuj.ExecuteNonQuery();
+                    transakcja.Commit();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    transakcja.Rollback();
+                }
+                laczbaze.Close();
+                pokaz_siatke();
+            }
+
+        }
+        #endregion
     }
 }
 

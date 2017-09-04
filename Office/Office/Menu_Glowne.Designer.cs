@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu_Glowne));
             this.tP_ustawienia = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Ustawienia_szukaj = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@
             this.btn_Ustawienia_Usun = new System.Windows.Forms.Button();
             this.btn_Ustawienia_Dodaj = new System.Windows.Forms.Button();
             this.btn_Ustawienia_Modyfikuj = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tP_ustawienia.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Ustawienia)).BeginInit();
@@ -65,6 +65,16 @@
             this.tP_ustawienia.SelectedIndex = 0;
             this.tP_ustawienia.Size = new System.Drawing.Size(675, 464);
             this.tP_ustawienia.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.Teal;
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(667, 438);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Usługi";
             // 
             // tabPage1
             // 
@@ -251,16 +261,7 @@
             this.btn_Ustawienia_Modyfikuj.TabIndex = 2;
             this.btn_Ustawienia_Modyfikuj.Text = "Modyfikuj";
             this.btn_Ustawienia_Modyfikuj.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.Teal;
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(667, 438);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Usługi";
+            this.btn_Ustawienia_Modyfikuj.Click += new System.EventHandler(this.btn_Ustawienia_Modyfikuj_Click);
             // 
             // Menu_Glowne
             // 
