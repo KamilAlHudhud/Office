@@ -34,20 +34,20 @@
             this.tP_ustawienia = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.gB_Uslugi = new System.Windows.Forms.GroupBox();
+            this.txt_uslugi_godzina = new System.Windows.Forms.MaskedTextBox();
+            this.txt_uslugi_dzien = new System.Windows.Forms.MaskedTextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_usluga_opis = new System.Windows.Forms.TextBox();
+            this.txtB_usluga_usluga = new System.Windows.Forms.TextBox();
             this.txt_uslugi_szukaj = new System.Windows.Forms.TextBox();
             this.btn_uslugi_szukaj = new System.Windows.Forms.Button();
             this.btn_uslugi_usun = new System.Windows.Forms.Button();
             this.btn_uslugi_modyfikuj = new System.Windows.Forms.Button();
             this.btn_uslugi_dodaj = new System.Windows.Forms.Button();
-            this.dGV_Uslugi_Uslugi = new System.Windows.Forms.DataGridView();
-            this.dGV_Uslugi_Uzytkownicy = new System.Windows.Forms.DataGridView();
+            this.dGV_Uslugi = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Ustawienia_szukaj = new System.Windows.Forms.Button();
@@ -65,12 +65,10 @@
             this.btn_Ustawienia_Usun = new System.Windows.Forms.Button();
             this.btn_Ustawienia_Dodaj = new System.Windows.Forms.Button();
             this.btn_Ustawienia_Modyfikuj = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
             this.tP_ustawienia.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.gB_Uslugi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGV_Uslugi_Uslugi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dGV_Uslugi_Uzytkownicy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_Uslugi)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Ustawienia)).BeginInit();
             this.gB_Ustawienia_Dane.SuspendLayout();
@@ -83,32 +81,31 @@
             this.tP_ustawienia.Location = new System.Drawing.Point(3, 3);
             this.tP_ustawienia.Name = "tP_ustawienia";
             this.tP_ustawienia.SelectedIndex = 0;
-            this.tP_ustawienia.Size = new System.Drawing.Size(675, 464);
+            this.tP_ustawienia.Size = new System.Drawing.Size(684, 474);
             this.tP_ustawienia.TabIndex = 0;
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Teal;
             this.tabPage2.Controls.Add(this.gB_Uslugi);
-            this.tabPage2.Controls.Add(this.dGV_Uslugi_Uslugi);
-            this.tabPage2.Controls.Add(this.dGV_Uslugi_Uzytkownicy);
+            this.tabPage2.Controls.Add(this.dGV_Uslugi);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(667, 438);
+            this.tabPage2.Size = new System.Drawing.Size(676, 448);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Usługi";
             // 
             // gB_Uslugi
             // 
+            this.gB_Uslugi.Controls.Add(this.txt_uslugi_godzina);
+            this.gB_Uslugi.Controls.Add(this.txt_uslugi_dzien);
             this.gB_Uslugi.Controls.Add(this.label9);
             this.gB_Uslugi.Controls.Add(this.label8);
             this.gB_Uslugi.Controls.Add(this.label7);
             this.gB_Uslugi.Controls.Add(this.label6);
-            this.gB_Uslugi.Controls.Add(this.textBox5);
-            this.gB_Uslugi.Controls.Add(this.textBox4);
-            this.gB_Uslugi.Controls.Add(this.textBox3);
-            this.gB_Uslugi.Controls.Add(this.textBox2);
+            this.gB_Uslugi.Controls.Add(this.txt_usluga_opis);
+            this.gB_Uslugi.Controls.Add(this.txtB_usluga_usluga);
             this.gB_Uslugi.Controls.Add(this.txt_uslugi_szukaj);
             this.gB_Uslugi.Controls.Add(this.btn_uslugi_szukaj);
             this.gB_Uslugi.Controls.Add(this.btn_uslugi_usun);
@@ -120,6 +117,32 @@
             this.gB_Uslugi.TabIndex = 1;
             this.gB_Uslugi.TabStop = false;
             this.gB_Uslugi.Text = "Usługi";
+            // 
+            // txt_uslugi_godzina
+            // 
+            this.txt_uslugi_godzina.Location = new System.Drawing.Point(24, 163);
+            this.txt_uslugi_godzina.Mask = "00:00";
+            this.txt_uslugi_godzina.Name = "txt_uslugi_godzina";
+            this.txt_uslugi_godzina.Size = new System.Drawing.Size(34, 20);
+            this.txt_uslugi_godzina.TabIndex = 11;
+            this.txt_uslugi_godzina.ValidatingType = typeof(System.DateTime);
+            // 
+            // txt_uslugi_dzien
+            // 
+            this.txt_uslugi_dzien.Location = new System.Drawing.Point(24, 113);
+            this.txt_uslugi_dzien.Mask = "0000/00/00";
+            this.txt_uslugi_dzien.Name = "txt_uslugi_dzien";
+            this.txt_uslugi_dzien.Size = new System.Drawing.Size(62, 20);
+            this.txt_uslugi_dzien.TabIndex = 10;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(21, 191);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(31, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Opis:";
             // 
             // label8
             // 
@@ -148,34 +171,20 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Usługa:";
             // 
-            // textBox5
+            // txt_usluga_opis
             // 
-            this.textBox5.Location = new System.Drawing.Point(24, 207);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(283, 153);
-            this.textBox5.TabIndex = 8;
+            this.txt_usluga_opis.Location = new System.Drawing.Point(24, 207);
+            this.txt_usluga_opis.Multiline = true;
+            this.txt_usluga_opis.Name = "txt_usluga_opis";
+            this.txt_usluga_opis.Size = new System.Drawing.Size(283, 153);
+            this.txt_usluga_opis.TabIndex = 8;
             // 
-            // textBox4
+            // txtB_usluga_usluga
             // 
-            this.textBox4.Location = new System.Drawing.Point(24, 163);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(283, 20);
-            this.textBox4.TabIndex = 7;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(24, 113);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(283, 20);
-            this.textBox3.TabIndex = 6;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(24, 66);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(283, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtB_usluga_usluga.Location = new System.Drawing.Point(24, 66);
+            this.txtB_usluga_usluga.Name = "txtB_usluga_usluga";
+            this.txtB_usluga_usluga.Size = new System.Drawing.Size(283, 20);
+            this.txtB_usluga_usluga.TabIndex = 5;
             // 
             // txt_uslugi_szukaj
             // 
@@ -202,6 +211,7 @@
             this.btn_uslugi_usun.TabIndex = 2;
             this.btn_uslugi_usun.Text = "Usuń";
             this.btn_uslugi_usun.UseVisualStyleBackColor = true;
+            this.btn_uslugi_usun.Click += new System.EventHandler(this.btn_uslugi_usun_Click);
             // 
             // btn_uslugi_modyfikuj
             // 
@@ -211,6 +221,7 @@
             this.btn_uslugi_modyfikuj.TabIndex = 1;
             this.btn_uslugi_modyfikuj.Text = "Modyfikuj";
             this.btn_uslugi_modyfikuj.UseVisualStyleBackColor = true;
+            this.btn_uslugi_modyfikuj.Click += new System.EventHandler(this.btn_uslugi_modyfikuj_Click);
             // 
             // btn_uslugi_dodaj
             // 
@@ -220,22 +231,17 @@
             this.btn_uslugi_dodaj.TabIndex = 0;
             this.btn_uslugi_dodaj.Text = "Dodaj";
             this.btn_uslugi_dodaj.UseVisualStyleBackColor = true;
+            this.btn_uslugi_dodaj.Click += new System.EventHandler(this.btn_uslugi_dodaj_Click);
             // 
-            // dGV_Uslugi_Uslugi
+            // dGV_Uslugi
             // 
-            this.dGV_Uslugi_Uslugi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGV_Uslugi_Uslugi.Location = new System.Drawing.Point(359, 227);
-            this.dGV_Uslugi_Uslugi.Name = "dGV_Uslugi_Uslugi";
-            this.dGV_Uslugi_Uslugi.Size = new System.Drawing.Size(302, 208);
-            this.dGV_Uslugi_Uslugi.TabIndex = 0;
-            // 
-            // dGV_Uslugi_Uzytkownicy
-            // 
-            this.dGV_Uslugi_Uzytkownicy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGV_Uslugi_Uzytkownicy.Location = new System.Drawing.Point(359, 6);
-            this.dGV_Uslugi_Uzytkownicy.Name = "dGV_Uslugi_Uzytkownicy";
-            this.dGV_Uslugi_Uzytkownicy.Size = new System.Drawing.Size(302, 215);
-            this.dGV_Uslugi_Uzytkownicy.TabIndex = 0;
+            this.dGV_Uslugi.AllowUserToOrderColumns = true;
+            this.dGV_Uslugi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGV_Uslugi.Location = new System.Drawing.Point(359, 6);
+            this.dGV_Uslugi.Name = "dGV_Uslugi";
+            this.dGV_Uslugi.Size = new System.Drawing.Size(302, 429);
+            this.dGV_Uslugi.TabIndex = 0;
+            this.dGV_Uslugi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Uslugi_CellClick_1);
             // 
             // tabPage1
             // 
@@ -248,7 +254,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(667, 438);
+            this.tabPage1.Size = new System.Drawing.Size(676, 448);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ustawienia";
             // 
@@ -280,8 +286,7 @@
             // 
             // dGV_Ustawienia
             // 
-            this.dGV_Ustawienia.AllowUserToAddRows = false;
-            this.dGV_Ustawienia.AllowUserToDeleteRows = false;
+            this.dGV_Ustawienia.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -299,10 +304,9 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dGV_Ustawienia.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dGV_Ustawienia.Location = new System.Drawing.Point(346, 20);
+            this.dGV_Ustawienia.Location = new System.Drawing.Point(322, 20);
             this.dGV_Ustawienia.Name = "dGV_Ustawienia";
-            this.dGV_Ustawienia.ReadOnly = true;
-            this.dGV_Ustawienia.Size = new System.Drawing.Size(290, 390);
+            this.dGV_Ustawienia.Size = new System.Drawing.Size(348, 422);
             this.dGV_Ustawienia.TabIndex = 1;
             this.dGV_Ustawienia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Ustawienia_CellClick);
             // 
@@ -321,7 +325,7 @@
             this.gB_Ustawienia_Dane.Controls.Add(this.btn_Ustawienia_Modyfikuj);
             this.gB_Ustawienia_Dane.Location = new System.Drawing.Point(16, 48);
             this.gB_Ustawienia_Dane.Name = "gB_Ustawienia_Dane";
-            this.gB_Ustawienia_Dane.Size = new System.Drawing.Size(300, 362);
+            this.gB_Ustawienia_Dane.Size = new System.Drawing.Size(300, 394);
             this.gB_Ustawienia_Dane.TabIndex = 0;
             this.gB_Ustawienia_Dane.TabStop = false;
             this.gB_Ustawienia_Dane.Text = "Dane:";
@@ -397,7 +401,7 @@
             // 
             // btn_Ustawienia_Usun
             // 
-            this.btn_Ustawienia_Usun.Location = new System.Drawing.Point(212, 333);
+            this.btn_Ustawienia_Usun.Location = new System.Drawing.Point(207, 351);
             this.btn_Ustawienia_Usun.Name = "btn_Ustawienia_Usun";
             this.btn_Ustawienia_Usun.Size = new System.Drawing.Size(75, 23);
             this.btn_Ustawienia_Usun.TabIndex = 2;
@@ -407,7 +411,7 @@
             // 
             // btn_Ustawienia_Dodaj
             // 
-            this.btn_Ustawienia_Dodaj.Location = new System.Drawing.Point(17, 333);
+            this.btn_Ustawienia_Dodaj.Location = new System.Drawing.Point(12, 351);
             this.btn_Ustawienia_Dodaj.Name = "btn_Ustawienia_Dodaj";
             this.btn_Ustawienia_Dodaj.Size = new System.Drawing.Size(75, 23);
             this.btn_Ustawienia_Dodaj.TabIndex = 2;
@@ -417,22 +421,13 @@
             // 
             // btn_Ustawienia_Modyfikuj
             // 
-            this.btn_Ustawienia_Modyfikuj.Location = new System.Drawing.Point(113, 333);
+            this.btn_Ustawienia_Modyfikuj.Location = new System.Drawing.Point(108, 351);
             this.btn_Ustawienia_Modyfikuj.Name = "btn_Ustawienia_Modyfikuj";
             this.btn_Ustawienia_Modyfikuj.Size = new System.Drawing.Size(75, 23);
             this.btn_Ustawienia_Modyfikuj.TabIndex = 2;
             this.btn_Ustawienia_Modyfikuj.Text = "Modyfikuj";
             this.btn_Ustawienia_Modyfikuj.UseVisualStyleBackColor = true;
             this.btn_Ustawienia_Modyfikuj.Click += new System.EventHandler(this.btn_Ustawienia_Modyfikuj_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(21, 191);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(31, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Opis:";
             // 
             // Menu_Glowne
             // 
@@ -448,8 +443,7 @@
             this.tabPage2.ResumeLayout(false);
             this.gB_Uslugi.ResumeLayout(false);
             this.gB_Uslugi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGV_Uslugi_Uslugi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dGV_Uslugi_Uzytkownicy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_Uslugi)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Ustawienia)).EndInit();
@@ -481,12 +475,9 @@
         private System.Windows.Forms.Button btn_Ustawienia_Dodaj;
         private System.Windows.Forms.Button btn_Ustawienia_Modyfikuj;
         private System.Windows.Forms.GroupBox gB_Uslugi;
-        private System.Windows.Forms.DataGridView dGV_Uslugi_Uslugi;
-        private System.Windows.Forms.DataGridView dGV_Uslugi_Uzytkownicy;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DataGridView dGV_Uslugi;
+        private System.Windows.Forms.TextBox txt_usluga_opis;
+        private System.Windows.Forms.TextBox txtB_usluga_usluga;
         private System.Windows.Forms.TextBox txt_uslugi_szukaj;
         private System.Windows.Forms.Button btn_uslugi_szukaj;
         private System.Windows.Forms.Button btn_uslugi_usun;
@@ -496,5 +487,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.MaskedTextBox txt_uslugi_godzina;
+        private System.Windows.Forms.MaskedTextBox txt_uslugi_dzien;
     }
 }

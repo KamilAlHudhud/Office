@@ -23,7 +23,7 @@ namespace Office
             InitializeComponent();
         }
         #region Funkcja Pokaż siatkę
-        private void pokaz_siatke(DataGridView siatka,TextBox txt_szukany)
+        private void pokaz_siatke(DataGridView siatka, TextBox txt_szukany)
         {
             //Pobieranie danych do tabeli
             MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
@@ -96,7 +96,7 @@ namespace Office
                 dodaj.Transaction = transakcja;
                 try
                 {
-                    dodaj.CommandText = "INSERT INTO office.uzytkownik SET login = '" + txtB_Login.Text + "', imie = '" + txtB_Imie.Text + "', nazwisko = '" + txtB_Nazwisko.Text + "', haslo = PASSWORD('" + txtB_Haslo.Text + "');";
+                    dodaj.CommandText = "INSERT INTO office.uzytkownik SET login = '" + txtB_Login.Text + "', imie = '" + txtB_Imie.Text + "', nazwisko = '" + txtB_Nazwisko.Text + "', haslo = PASSWORD('" + txtB_Haslo.Text + "';";
                     dodaj.ExecuteNonQuery();
                     transakcja.Commit();
                 }
@@ -147,7 +147,6 @@ namespace Office
         }
         #endregion
 
-
         #region Delete danych użytkownika/pracownika
         private void btn_Ustawienia_Usun_Click(object sender, EventArgs e)
         {
@@ -183,12 +182,165 @@ namespace Office
                 laczbaze.Close();
                 pokaz_siatke(dGV_Ustawienia, txtB_Ustawienia_szukaj);
             }
-            #endregion
         }
+        #endregion
 
+        #region szukanie usług
         private void btn_uslugi_szukaj_Click(object sender, EventArgs e)
         {
-            pokaz_siatke(dGV_Uslugi_Uzytkownicy,txt_uslugi_szukaj);
+            pokaz_siatke_uslug();
         }
+        private void pokaz_siatke_uslug()
+        {
+            //Pobieranie danych do tabeli uslug
+            MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
+            MySqlCommand pobierz = new MySqlCommand("SELECT * FROM office.uslugi WHERE Usluga OR Opis LIKE '%" + txt_uslugi_szukaj.Text + "%'  ;", laczbaze);
+            try
+            {
+                laczbaze.Open();
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = pobierz;
+                DataTable dbdataset = new DataTable();
+                adapter.Fill(dbdataset);
+                BindingSource bSource = new BindingSource();
+
+                bSource.DataSource = dbdataset;
+                dGV_Uslugi.DataSource = bSource;
+                adapter.Update(dbdataset);
+                laczbaze.Close();
+                dGV_Uslugi.Columns[0].Visible = false;
+                dGV_Uslugi.Columns[1].Visible = false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Dodaj usługe
+        private void btn_uslugi_dodaj_Click(object sender, EventArgs e)
+        {
+            if (txtB_usluga_usluga.Text.Length <= 3)
+            {
+                MessageBox.Show("Uzupełnij Dane!");
+            }
+            else
+            {
+
+                MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
+                MySqlCommand dodaj = new MySqlCommand();
+                MySqlTransaction transakcja;
+                laczbaze.Open();
+                transakcja = laczbaze.BeginTransaction(IsolationLevel.ReadCommitted);
+                dodaj.Connection = laczbaze;
+                dodaj.Transaction = transakcja;
+                try
+                {
+                    dodaj.CommandText = "INSERT INTO office.uslugi SET Usluga = '" + txtB_usluga_usluga.Text + "', Opis = '" + txt_usluga_opis.Text + "', Godzina = '" + txt_uslugi_godzina.Text + "', Dzien =" + txt_uslugi_dzien.Text + "  ;";
+                    dodaj.ExecuteNonQuery();
+                    transakcja.Commit();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    transakcja.Rollback();
+                }
+                txt_uslugi_szukaj.Text = "";
+                pokaz_siatke_uslug();
+
+                laczbaze.Close();
+
+            }
+        }
+        #endregion
+
+        #region Pobranie z dGV Uslugi_Uslugi do textBoxów
+        private void dGV_Uslugi_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                id_rekordu = Convert.ToInt32(dGV_Uslugi.Rows[e.RowIndex].Cells[0].Value);
+                txt_uslugi_godzina.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[1].Value);
+                txt_uslugi_dzien.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[2].Value);
+                txtB_usluga_usluga.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[3].Value);
+                txt_usluga_opis.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[4].Value);
+            }
+
+        }
+        #endregion
+        #region Modyfikowanie usługi
+        private void btn_uslugi_modyfikuj_Click(object sender, EventArgs e)
+        {
+            if (txtB_usluga_usluga.Text.Length <= 3)
+            {
+                MessageBox.Show("Uzupełnij Dane!");
+            }
+            else
+            {
+                MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
+                MySqlCommand modyfikuj = new MySqlCommand();
+                MySqlTransaction transakcja;
+                laczbaze.Open();
+                transakcja = laczbaze.BeginTransaction(IsolationLevel.ReadCommitted);
+                modyfikuj.Connection = laczbaze;
+                modyfikuj.Transaction = transakcja;
+                try
+                {
+                    modyfikuj.CommandText = "UPDATE office.uslugi SET Usluga = '" + txtB_usluga_usluga.Text + "', Opis = '" + txt_usluga_opis.Text + "', Godzina = '" + txt_uslugi_godzina.Text + "', Dzien =" + txt_uslugi_dzien.Text + " WHERE iduslugi =" + id_rekordu + ";";
+                    modyfikuj.ExecuteNonQuery();
+                    transakcja.Commit();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    transakcja.Rollback();
+                }
+                txt_uslugi_szukaj.Text = "";
+                laczbaze.Close();
+                pokaz_siatke_uslug();
+
+
+
+            }
+        }
+        #endregion
+
+        #region DELETE Uslugi
+        private void btn_uslugi_usun_Click(object sender, EventArgs e)
+        {
+
+            MySqlConnection laczbaze = new MySqlConnection(Konfiguracja);
+            MySqlCommand delete = new MySqlCommand();
+            MySqlTransaction transakcja;
+            laczbaze.Open();
+            transakcja = laczbaze.BeginTransaction(IsolationLevel.ReadCommitted);
+            delete.Connection = laczbaze;
+            delete.Transaction = transakcja;
+            try
+            {
+                if (MessageBox.Show("Czy napewno chcesz usunąć usługę?", "UWAGA!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    delete.CommandText = "DELETE FROM office.uslugi WHERE iduslugi =" + id_rekordu + ";";
+                    delete.ExecuteNonQuery();
+                    transakcja.Commit();
+                    MessageBox.Show("Usługa została usunięta");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                transakcja.Rollback();
+            }
+            laczbaze.Close();
+            pokaz_siatke_uslug();
+
+        }
+        #endregion
+
+
+
     }
 }
+
