@@ -65,6 +65,8 @@
             this.btn_Ustawienia_Usun = new System.Windows.Forms.Button();
             this.btn_Ustawienia_Dodaj = new System.Windows.Forms.Button();
             this.btn_Ustawienia_Modyfikuj = new System.Windows.Forms.Button();
+            this.txtB_Wykonujacy = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.tP_ustawienia.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.gB_Uslugi.SuspendLayout();
@@ -98,6 +100,8 @@
             // 
             // gB_Uslugi
             // 
+            this.gB_Uslugi.Controls.Add(this.label10);
+            this.gB_Uslugi.Controls.Add(this.txtB_Wykonujacy);
             this.gB_Uslugi.Controls.Add(this.txt_uslugi_godzina);
             this.gB_Uslugi.Controls.Add(this.txt_uslugi_dzien);
             this.gB_Uslugi.Controls.Add(this.label9);
@@ -111,16 +115,16 @@
             this.gB_Uslugi.Controls.Add(this.btn_uslugi_usun);
             this.gB_Uslugi.Controls.Add(this.btn_uslugi_modyfikuj);
             this.gB_Uslugi.Controls.Add(this.btn_uslugi_dodaj);
-            this.gB_Uslugi.Location = new System.Drawing.Point(12, 6);
+            this.gB_Uslugi.Location = new System.Drawing.Point(12, 0);
             this.gB_Uslugi.Name = "gB_Uslugi";
-            this.gB_Uslugi.Size = new System.Drawing.Size(341, 426);
+            this.gB_Uslugi.Size = new System.Drawing.Size(341, 434);
             this.gB_Uslugi.TabIndex = 1;
             this.gB_Uslugi.TabStop = false;
             this.gB_Uslugi.Text = "Usługi";
             // 
             // txt_uslugi_godzina
             // 
-            this.txt_uslugi_godzina.Location = new System.Drawing.Point(24, 163);
+            this.txt_uslugi_godzina.Location = new System.Drawing.Point(24, 201);
             this.txt_uslugi_godzina.Mask = "00:00";
             this.txt_uslugi_godzina.Name = "txt_uslugi_godzina";
             this.txt_uslugi_godzina.Size = new System.Drawing.Size(34, 20);
@@ -129,7 +133,7 @@
             // 
             // txt_uslugi_dzien
             // 
-            this.txt_uslugi_dzien.Location = new System.Drawing.Point(24, 113);
+            this.txt_uslugi_dzien.Location = new System.Drawing.Point(24, 151);
             this.txt_uslugi_dzien.Mask = "0000/00/00";
             this.txt_uslugi_dzien.Name = "txt_uslugi_dzien";
             this.txt_uslugi_dzien.Size = new System.Drawing.Size(62, 20);
@@ -138,7 +142,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(21, 191);
+            this.label9.Location = new System.Drawing.Point(21, 227);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 9;
@@ -147,7 +151,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(21, 147);
+            this.label8.Location = new System.Drawing.Point(21, 185);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 13);
             this.label8.TabIndex = 9;
@@ -156,7 +160,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 97);
+            this.label7.Location = new System.Drawing.Point(21, 135);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 9;
@@ -165,7 +169,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 50);
+            this.label6.Location = new System.Drawing.Point(21, 96);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 13);
             this.label6.TabIndex = 9;
@@ -173,15 +177,15 @@
             // 
             // txt_usluga_opis
             // 
-            this.txt_usluga_opis.Location = new System.Drawing.Point(24, 207);
+            this.txt_usluga_opis.Location = new System.Drawing.Point(24, 243);
             this.txt_usluga_opis.Multiline = true;
             this.txt_usluga_opis.Name = "txt_usluga_opis";
-            this.txt_usluga_opis.Size = new System.Drawing.Size(283, 153);
+            this.txt_usluga_opis.Size = new System.Drawing.Size(283, 117);
             this.txt_usluga_opis.TabIndex = 8;
             // 
             // txtB_usluga_usluga
             // 
-            this.txtB_usluga_usluga.Location = new System.Drawing.Point(24, 66);
+            this.txtB_usluga_usluga.Location = new System.Drawing.Point(24, 112);
             this.txtB_usluga_usluga.Name = "txtB_usluga_usluga";
             this.txtB_usluga_usluga.Size = new System.Drawing.Size(283, 20);
             this.txtB_usluga_usluga.TabIndex = 5;
@@ -429,6 +433,22 @@
             this.btn_Ustawienia_Modyfikuj.UseVisualStyleBackColor = true;
             this.btn_Ustawienia_Modyfikuj.Click += new System.EventHandler(this.btn_Ustawienia_Modyfikuj_Click);
             // 
+            // txtB_Wykonujacy
+            // 
+            this.txtB_Wykonujacy.Location = new System.Drawing.Point(24, 73);
+            this.txtB_Wykonujacy.Name = "txtB_Wykonujacy";
+            this.txtB_Wykonujacy.Size = new System.Drawing.Size(283, 20);
+            this.txtB_Wykonujacy.TabIndex = 12;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(21, 57);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(158, 13);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Imie i Nazwisko Wykonującego:";
+            // 
             // Menu_Glowne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,5 +509,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.MaskedTextBox txt_uslugi_godzina;
         private System.Windows.Forms.MaskedTextBox txt_uslugi_dzien;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtB_Wykonujacy;
     }
 }

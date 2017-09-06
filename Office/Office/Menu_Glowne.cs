@@ -238,7 +238,7 @@ namespace Office
                 dodaj.Transaction = transakcja;
                 try
                 {
-                    dodaj.CommandText = "INSERT INTO office.uslugi SET Usluga = '" + txtB_usluga_usluga.Text + "', Opis = '" + txt_usluga_opis.Text + "', Godzina = '" + txt_uslugi_godzina.Text + "', Dzien =" + txt_uslugi_dzien.Text + "  ;";
+                    dodaj.CommandText = "INSERT INTO office.uslugi SET Usluga = '" + txtB_usluga_usluga.Text + "', Opis = '" + txt_usluga_opis.Text + "', Godzina = '" + txt_uslugi_godzina.Text + "', Dzien ='" + txt_uslugi_dzien.Text + "', Kto = '"+txtB_Wykonujacy.Text+"'  ;";
                     dodaj.ExecuteNonQuery();
                     transakcja.Commit();
                 }
@@ -262,14 +262,16 @@ namespace Office
             if (e.RowIndex >= 0)
             {
                 id_rekordu = Convert.ToInt32(dGV_Uslugi.Rows[e.RowIndex].Cells[0].Value);
-                txt_uslugi_godzina.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[1].Value);
-                txt_uslugi_dzien.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[2].Value);
-                txtB_usluga_usluga.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[3].Value);
-                txt_usluga_opis.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[4].Value);
+                txt_uslugi_godzina.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[2].Value);
+                txt_uslugi_dzien.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[3].Value);
+                txtB_usluga_usluga.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[4].Value);
+                txt_usluga_opis.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[5].Value);
+                txtB_Wykonujacy.Text = Convert.ToString(dGV_Uslugi.Rows[e.RowIndex].Cells[1].Value);
             }
 
         }
         #endregion
+
         #region Modyfikowanie usługi
         private void btn_uslugi_modyfikuj_Click(object sender, EventArgs e)
         {
@@ -288,7 +290,7 @@ namespace Office
                 modyfikuj.Transaction = transakcja;
                 try
                 {
-                    modyfikuj.CommandText = "UPDATE office.uslugi SET Usluga = '" + txtB_usluga_usluga.Text + "', Opis = '" + txt_usluga_opis.Text + "', Godzina = '" + txt_uslugi_godzina.Text + "', Dzien =" + txt_uslugi_dzien.Text + " WHERE iduslugi =" + id_rekordu + ";";
+                    modyfikuj.CommandText = "UPDATE office.uslugi SET Usluga = '" + txtB_usluga_usluga.Text + "', Opis = '" + txt_usluga_opis.Text + "', Godzina = '" + txt_uslugi_godzina.Text + "', Dzien =" + txt_uslugi_dzien.Text + ",  Kto = '" + txtB_Wykonujacy.Text + "' WHERE iduslugi =" + id_rekordu + ";";
                     modyfikuj.ExecuteNonQuery();
                     transakcja.Commit();
                 }
